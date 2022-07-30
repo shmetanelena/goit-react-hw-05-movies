@@ -1,16 +1,14 @@
+//import Cont from './Container';
+//import Head from './Header';
+import Navigation from './Navigation';
+// import Navigation from './Navigation';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Navigation></Navigation>
     </div>
   );
 };
+
+export default App;
