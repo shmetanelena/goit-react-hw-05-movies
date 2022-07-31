@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-//import { lazy } from 'react';
+import { lazy } from 'react';
 import SharedLayout from './ShareadLayout';
-import Home from 'pages/Home';
-import MovieDetails from 'pages/MovieDetails';
-import Cast from './Cast';
-import Reviews from './Reviews';
-import Movies from 'pages/Movies';
+
+//import Home from 'pages/Home';
+// import MovieDetails from 'pages/MovieDetails';
+//import Cast from './Cast';
+//import Reviews from './Reviews';
+//import Movies from 'pages/Movies';
 
 // const createAsyncComponent = path => lazy(() => import(path));
 // const createAsyncComponent = path => {
@@ -15,11 +16,17 @@ import Movies from 'pages/Movies';
 //   );
 // };
 
-// const Home = createAsyncComponent('../pages/Home.js');
+// const Home = createAsyncComponent('pages/Home');
 // const MovieDetails = createAsyncComponent('pages/MovieDetails');
 // const Cast = createAsyncComponent('./Cast');
 // const Reviews = createAsyncComponent('./Reviews');
 // const Movies = createAsyncComponent('pages/Movies');
+
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const Cast = lazy(() => import('./Cast'));
+const Reviews = lazy(() => import('./Reviews'));
 
 const App = () => {
   return (

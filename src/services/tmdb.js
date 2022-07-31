@@ -1,5 +1,7 @@
 import axios from 'axios';
-// import images from '../images/background/*.jpg';
+import w92 from '../images/w92.jpg';
+import w154 from '../images/w154.jpg';
+const images = { w92, w154 };
 
 const API_KEY = 'c1c0e09e2b2780ccf5e67712da2ef6c9';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -7,8 +9,7 @@ const IMAGES_BASE_URL = 'https://image.tmdb.org/t/p';
 
 const getImageUrl = (path, small) => {
   const size = small ? 'w92' : 'w154';
-  //return path ? `${IMAGES_BASE_URL}/${size}${path}` : images[size];
-  return `${IMAGES_BASE_URL}/${size}${path}`;
+  return path ? `${IMAGES_BASE_URL}/${size}${path}` : images[size];
 };
 
 const getTrending = async () => {
