@@ -3,6 +3,8 @@ import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import api from 'services/tmdb';
 import BackLink from 'components/BackLink';
 
+import { Image, FilmDetailsbox, FilmInfoBox } from './MovieDetails.styled';
+
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
@@ -19,13 +21,19 @@ const MovieDetails = () => {
         <>
           <BackLink to={backLinkHref}>Go back</BackLink>
           <div>
-            <img src={api.getImageUrl(movie.poster_path)} alt="" />
-            <h2>{movie.title}</h2>
-            <p>User Score: ${movie.vote_average}</p>
-            <h5>Overview</h5>
-            <p>${movie.overview}</p>
-            <h5>Genres</h5>
-            <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
+            <FilmDetailsbox>
+              <Image src={api.getImageUrl(movie.poster_path)} alt="poster" />
+              <FilmInfoBox>
+                <h2>
+                  {movie.title} ({movie.release_date.substring(0, 4)})
+                </h2>
+                <p>User Score: {movie.vote_average * 10}%</p>
+                <h5>Overview</h5>
+                <p>${movie.overview}</p>
+                <h5>Genres</h5>
+                <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
+              </FilmInfoBox>
+            </FilmDetailsbox>
             <hr />
             <p>Additional information</p>
             <ul>

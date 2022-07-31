@@ -8,7 +8,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGES_BASE_URL = 'https://image.tmdb.org/t/p';
 
 const getImageUrl = (path, small) => {
-  const size = small ? 'w92' : 'w154';
+  const size = small ? 'w92' : 'w342';
   return path ? `${IMAGES_BASE_URL}/${size}${path}` : images[size];
 };
 
