@@ -23,7 +23,7 @@ const SearchForm = ({ onSubmit, queryInit }) => {
         value={query}
       />
       <button type="submit">Search</button>
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </form>
   );
 };
