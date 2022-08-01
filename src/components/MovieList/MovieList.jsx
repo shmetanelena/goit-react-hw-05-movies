@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const MovieList = ({ movies }) => {
-  const loaction = useLocation();
+  const location = useLocation();
 
   return (
     <main>
@@ -10,7 +10,7 @@ const MovieList = ({ movies }) => {
         <ul>
           {movies.map(({ id, title }) => (
             <li key={id}>
-              <Link to={`/movies/${id}`} state={{ from: loaction }}>
+              <Link to={`/movies/${id}`} state={{ from: location }}>
                 {title}
               </Link>
             </li>

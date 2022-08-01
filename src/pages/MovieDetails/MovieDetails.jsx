@@ -2,18 +2,35 @@ import { useState, useEffect, Suspense } from 'react';
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import api from 'services/tmdb';
 import BackLink from 'components/BackLink';
-
+import NotFound from 'pages/NotFound';
 import { Image, FilmDetailsbox, FilmInfoBox } from './MovieDetails.styled';
+import { useRef } from 'react';
 
 const MovieDetails = () => {
+  const stateRef = useRef();
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? stateRef.current ?? '/';
+  const [error, setError] = useState();
+
+  if (location.state?.from) {
+    stateRef.current = location.state.from;
+  }
 
   useEffect(() => {
-    api.getMovie(movieId).then(setMovie).catch(console.error);
+    api
+      .getMovie(movieId)
+      .then(setMovie)
+      .catch(e => {
+        console.error(e);
+        setError('*');
+      });
   }, [movieId]);
+
+  if (error) {
+    return <NotFound />;
+  }
 
   return (
     <main>
