@@ -25,14 +25,13 @@ const Movies = () => {
       return;
     }
 
-    api.searchMovie(query).then(setMovies).catch(toast.info('Not found :(('));
+    api.searchMovie(query).then(setMovies).catch(console.error);
   }, [query]);
 
   return (
     <main>
       <SearchForm onSubmit={handleSubmit} queryInit={query} />
       {movies.length > 0 && <MovieList movies={movies} />}
-      <ToastContainer autoClose={2000} />
     </main>
   );
 };
