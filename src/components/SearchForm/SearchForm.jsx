@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SearchForm = ({ onSubmit, queryInit }) => {
   const [query, setQuery] = useState(queryInit);
@@ -7,6 +9,7 @@ const SearchForm = ({ onSubmit, queryInit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
+      toast.error('Enter the title of the movie');
       return;
     }
     onSubmit(query);
@@ -20,6 +23,7 @@ const SearchForm = ({ onSubmit, queryInit }) => {
         value={query}
       />
       <button type="submit">Search</button>
+      <ToastContainer />
     </form>
   );
 };
